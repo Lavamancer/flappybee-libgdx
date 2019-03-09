@@ -20,7 +20,6 @@ public class Laser implements Entity {
 
     public Laser(Main main, int x) {
         this.main = main;
-//        Sound sound = Gdx.audio.newSound(Gdx.files.internal("laser.wav"));
         laserSound.play(Main.VOLUME);
         texture = new Texture("laser.png");
         this.x = x - texture.getWidth() / 2;
@@ -38,7 +37,6 @@ public class Laser implements Entity {
                         && y > asteroid.y && y < asteroid.y + asteroid.texture.getHeight()) {
                     destroy(main.entities);
                     asteroid.destroy(main.entities);
-//                    Sound sound = Gdx.audio.newSound(Gdx.files.internal("explosion.mp3"));
                     explosionSound.play(Main.VOLUME);
                 }
             }
