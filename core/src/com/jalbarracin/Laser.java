@@ -9,14 +9,19 @@ import java.util.ArrayList;
 
 public class Laser implements Entity {
 
+    Main main;
     Texture texture;
     int x;
     int y;
+    private static Sound laserSound = Gdx.audio.newSound(Gdx.files.internal("laser.wav"));
+    private static Sound explosionSound = Gdx.audio.newSound(Gdx.files.internal("explosion.mp3"));
 
 
-    public Laser(int x) {
-        Sound sound = Gdx.audio.newSound(Gdx.files.internal("laser.wav"));
-        sound.play();
+
+    public Laser(Main main, int x) {
+        this.main = main;
+//        Sound sound = Gdx.audio.newSound(Gdx.files.internal("laser.wav"));
+        laserSound.play(Main.VOLUME);
         texture = new Texture("laser.png");
         this.x = x - texture.getWidth() / 2;
     }
@@ -24,6 +29,21 @@ public class Laser implements Entity {
     @Override
     public void update() {
         y += 10;
+
+        ArrayList<Entity> aux = new ArrayList<>(main.entities);
+        for (Entity entity : aux) {
+            if (entity instanceof Asteroid) {
+                Asteroid asteroid = (Asteroid) entity;
+                if (x > asteroid.x && x < asteroid.x + asteroid.texture.getWidth()
+                        && y > asteroid.y && y < asteroid.y + asteroid.texture.getHeight()) {
+                    destroy(main.entities);
+                    asteroid.destroy(main.entities);
+//                    Sound sound = Gdx.audio.newSound(Gdx.files.internal("explosion.mp3"));
+                    explosionSound.play(Main.VOLUME);
+                }
+            }
+        }
+
     }
 
     @Override
@@ -36,6 +56,10 @@ public class Laser implements Entity {
         if (y > Gdx.graphics.getHeight()) {
             entities.remove(this);
         }
+    }
+
+    public void destroy(ArrayList<Entity> entities) {
+        entities.remove(this);
     }
 
 

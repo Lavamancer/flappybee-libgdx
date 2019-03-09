@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class Main extends ApplicationAdapter {
 
+	public final static float VOLUME = 0.2f;
 	SpriteBatch spriteBatch;
 	ArrayList<Entity> entities = new ArrayList<>();
 	ArrayList<Entity> entitiesAux = new ArrayList<>();
@@ -42,7 +43,7 @@ public class Main extends ApplicationAdapter {
 		spriteBatch.end();
 
 
-		if (Math.random() > 0.9) {
+		if (Math.random() > 0.96) {
 			new Asteroid(this);
 		}
 	}
