@@ -5,9 +5,13 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import java.util.ArrayList;
+
 public class Player implements Entity {
 
     private static final int SPEED_PLAYER = 10;
+    private static final int TICK_LASER = 30;
+    private static final int TICK_ENGINE = 4;
 
     Main main;
     Texture texture;
@@ -15,6 +19,7 @@ public class Player implements Entity {
     int x;
     int y;
     int tickEngine;
+    int tickLaser;
 
 
     public Player(Main main) {
@@ -38,6 +43,11 @@ public class Player implements Entity {
         }
     }
 
+    @Override
+    public void dispose(ArrayList<Entity> entities) {
+        // el jugador nunca muere por ahora
+    }
+
 
     private void updateInput() {
         // entrada de teclado para mover la nave
@@ -55,16 +65,21 @@ public class Player implements Entity {
             x = Gdx.graphics.getWidth() - texture.getWidth();
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && tickLaser == 0) {
+            tickLaser = TICK_LASER;
             Laser laser = new Laser(x + texture.getWidth() / 2);
             main.entities.add(laser);
+        }
+
+        if (tickLaser > 0) {
+            tickLaser--;
         }
     }
 
     private void updateEngine() {
         // aqui actualizamos los tick de pintado del motor
         tickEngine++;
-        if (tickEngine > 4) {
+        if (tickEngine > TICK_ENGINE) {
             tickEngine = 0;
         }
     }

@@ -25,12 +25,13 @@ public class Main extends ApplicationAdapter {
 	public void render () {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		spriteBatch.begin();
 
+		spriteBatch.begin();
 		entitiesAux.clear();
 		entitiesAux.addAll(entities);
 
 		for (Entity entity : entitiesAux) {
+			entity.dispose(entities);
 			entity.update();
 			entity.render(spriteBatch);
 		}
