@@ -8,13 +8,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Main extends ApplicationAdapter {
 
 	SpriteBatch spriteBatch;
-	Player player = new Player();
+	Player player;
 
 
 	@Override
 	public void create () {
 		spriteBatch = new SpriteBatch();
-		player.create();
+		player = new Player();
 	}
 
 	@Override
@@ -26,6 +26,8 @@ public class Main extends ApplicationAdapter {
 		player.render(spriteBatch);
 
 		spriteBatch.end();
+
+		player.update();
 	}
 	
 	@Override
