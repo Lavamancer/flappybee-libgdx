@@ -9,12 +9,15 @@ public class Player {
 
     private static final int SPEED_PLAYER = 10;
     Texture texture;
+    Texture engineTexture;
     int x;
     int y;
+    int tickEngine;
 
 
     public Player() {
         texture = new Texture("ship.png");
+        engineTexture = new Texture("engine.png");
     }
 
     public void update() {
@@ -32,10 +35,19 @@ public class Player {
         if (x > Gdx.graphics.getWidth() - texture.getWidth()) {
             x = Gdx.graphics.getWidth() - texture.getWidth();
         }
+
+        tickEngine++;
+        if (tickEngine > 4) {
+            tickEngine = 0;
+        }
     }
 
     public void render(SpriteBatch spriteBatch) {
         spriteBatch.draw(texture, x, y);
+
+        if (tickEngine == 0) {
+            spriteBatch.draw(engineTexture, x, y);
+        }
     }
 
 
