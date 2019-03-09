@@ -11,8 +11,8 @@ public class Laser implements Entity {
 
 
     public Laser(int x) {
-        this.x = x;
         texture = new Texture("laser.png");
+        this.x = x - texture.getWidth() / 2;
     }
 
     @Override

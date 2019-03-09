@@ -56,7 +56,7 @@ public class Player implements Entity {
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-            Laser laser = new Laser(x);
+            Laser laser = new Laser(x + texture.getWidth() / 2);
             main.entities.add(laser);
         }
     }

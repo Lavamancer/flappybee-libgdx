@@ -19,7 +19,6 @@ public class Main extends ApplicationAdapter {
 	public void create () {
 		spriteBatch = new SpriteBatch();
 		player = new Player(this);
-		entities.add(player);
 	}
 
 	@Override
@@ -35,6 +34,9 @@ public class Main extends ApplicationAdapter {
 			entity.update();
 			entity.render(spriteBatch);
 		}
+
+		player.update();
+		player.render(spriteBatch);
 
 		spriteBatch.end();
 	}
