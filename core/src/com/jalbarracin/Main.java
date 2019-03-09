@@ -5,16 +5,21 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import java.util.ArrayList;
+
 public class Main extends ApplicationAdapter {
 
 	SpriteBatch spriteBatch;
+	ArrayList<Entity> entities = new ArrayList<>();
+	ArrayList<Entity> entitiesAux = new ArrayList<>();
 	Player player;
 
 
 	@Override
 	public void create () {
 		spriteBatch = new SpriteBatch();
-		player = new Player();
+		player = new Player(this);
+		entities.add(player);
 	}
 
 	@Override
@@ -23,11 +28,15 @@ public class Main extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		spriteBatch.begin();
 
-		player.render(spriteBatch);
+		entitiesAux.clear();
+		entitiesAux.addAll(entities);
+
+		for (Entity entity : entitiesAux) {
+			entity.update();
+			entity.render(spriteBatch);
+		}
 
 		spriteBatch.end();
-
-		player.update();
 	}
 	
 	@Override
