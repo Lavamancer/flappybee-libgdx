@@ -40,6 +40,11 @@ public class Main extends ApplicationAdapter {
 		player.render(spriteBatch);
 
 		spriteBatch.end();
+
+
+		if (Math.random() > 0.9) {
+			new Asteroid(this);
+		}
 	}
 	
 	@Override
