@@ -58,7 +58,6 @@ public class Asteroid implements Entity {
     public void dispose(ArrayList<Entity> entities) {
         if (x < 0) {
             entities.remove(this);
-            System.out.println("Asteroid dispose");
         }
     }
 
