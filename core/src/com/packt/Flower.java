@@ -1,4 +1,4 @@
-package com.jalbarracin;
+package com.packt;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

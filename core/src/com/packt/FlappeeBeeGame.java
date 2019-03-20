@@ -1,4 +1,4 @@
-package com.jalbarracin;
+package com.packt;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.assets.AssetManager;

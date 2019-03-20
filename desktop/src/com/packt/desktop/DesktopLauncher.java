@@ -1,9 +1,9 @@
-package com.jalbarracin.desktop;
+package com.packt.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
-import com.jalbarracin.FlappeeBeeGame;
+import com.packt.FlappeeBeeGame;
 
 public class DesktopLauncher {
 
